@@ -1,0 +1,5 @@
+module.exports = {
+  mongoURI: process.env.MONGO_URI,
+  secretKey: process.env.SECRET_KEY,
+  dbName: process.env.DB_NAME,
+};
