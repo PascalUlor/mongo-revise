@@ -1,11 +1,12 @@
 const { Router } = require('express');
 const departmentController = require('../controllers/department');
+const validateDepartmentData = require('../middleware/validateInput');
 
 const router = Router();
 
 router
   .route('/')
-  .post(departmentController.createDepartment)
+  .post(validateDepartmentData, departmentController.createDepartment)
   .get(departmentController.getDepartments);
 
 router
