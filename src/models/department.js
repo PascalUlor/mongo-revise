@@ -24,5 +24,5 @@ const departmentSchema = new Schema(
   { timestamps: true },
   { versionKey: false },
 );
-
+departmentSchema.index({ name: 'text' });
 module.exports = departmentSchema;

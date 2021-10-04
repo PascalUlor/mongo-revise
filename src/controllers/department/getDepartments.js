@@ -18,9 +18,16 @@ const getDepartments = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page, 10) || 1;
     const resultPerPage = 10;
+    const { search } = req.query;
+    const query = search ? {
+      $text: {
+        $search: search,
+        $caseSensitive: false,
+      },
+    } : {};
 
-    // Get department on demand | limiting the department to 8 per page
-    const Departments = await Department.find()
+    // Get department on demand | limiting the department to 10 per page
+    const Departments = await Department.find(query)
       .skip(resultPerPage * page - resultPerPage)
       .limit(resultPerPage);
 
